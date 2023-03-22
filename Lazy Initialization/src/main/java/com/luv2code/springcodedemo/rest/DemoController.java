@@ -2,38 +2,23 @@ package com.luv2code.springcodedemo.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.luv2code.springcodedemo.common.Coach;
 
 @RestController //this class acts as a rest service 
+//@Lazy
 public class DemoController {
+	
 	private Coach myCoach;
-	/*
-	 * @Autowired //This is field injection ,one of the ways of dependency injection
-	 * private Coach myCoach;
-	 */
-	
-	
-	    // This is Constructor Injection
-		//@Qualifier - To specify which particular implementation of Coach interface object has to be injected
-		//Specify Bean id in Qualifier which is the Class name with small first letter
-		//@Qualifier has more priority than @Primary.
 	  @Autowired 
 	  DemoController(@Qualifier("cricketCoach") Coach myCoach){ 
+		  System.out.println("In Constructor: "+getClass().getSimpleName());
 		  this.myCoach = myCoach;
 		  }
-	 
-	
-	/*
-	 * @Autowired //this is setter injection.You can also inject on any custom
-	 * methods too 
-	 * public void setMyCoach(Coach myCoach) {
-	 *  this.myCoach = myCoach; 
-	 *  }
-	 */
-	
+
 	
 	@GetMapping("/dailyworkout") //handles http request
 	public String getDailyWorkout() {
