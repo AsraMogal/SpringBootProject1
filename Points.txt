@@ -1,0 +1,4 @@
+To close the port:
+
+1.netstat -ano | findstr 8080 --> Upon Running this you will get the pid ,pass it in following command
+2.taskkill /F /pid 1088
