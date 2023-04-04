@@ -1,6 +1,7 @@
 package com.luv2code.cruddemo;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,14 +11,24 @@ import com.luv2code.cruddemo.DAO.StudentDao;
 import com.luv2code.cruddemo.entity.Student;
 
 @SpringBootApplication
-public class CruddemoApplication {  
+public class CruddemoApplication { 
+	
+	private StudentDao theStudentDao;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CruddemoApplication.class, args);
 	}
+		
+	
+	 @Autowired CruddemoApplication(StudentDao theStudentDao)
+	 	{
+		 this.theStudentDao = theStudentDao; 
+		
+	 	}
+	 
 	
 	@Bean
-	public CommandLineRunner commandLineRunner(StudentDao theStudentDao)
+	public CommandLineRunner commandLineRunner()
 	
 	{
 		return runner->{
@@ -29,9 +40,50 @@ public class CruddemoApplication {
 			
 			//readAllStudents(theStudentDao);
 			
-			queryToGetStudentsByLastName(theStudentDao);
+			//queryToGetStudentsByLastName(theStudentDao);
+			
+			//queryToUpdateStudent(theStudentDao);
+			
+			//querytoDeletStudentByStudentId(theStudentDao);
+			
+			querytoDeleteAllStudents(theStudentDao);
 		};
 	}
+
+	private void querytoDeleteAllStudents(StudentDao theStudentDao) {
+		// TODO Auto-generated method stub
+		int rowsdeleted = theStudentDao.deleteAllStudents();
+		
+		//Displaying the count of rows deleted
+		System.out.println(rowsdeleted);
+		
+	}
+
+
+	private void querytoDeletStudentByStudentId(StudentDao theStudentDao) {
+		// TODO Auto-generated method stub
+		theStudentDao.delete(1);
+	}
+
+
+	private void queryToUpdateStudent(StudentDao theStudentDao) {
+		// TODO Auto-generated method stub
+		//retrive the student by id
+		Student student = theStudentDao.findById(1);
+		
+		//print the student before update
+		System.out.println(student);
+		
+		//update the studet last name
+		student.setLastname("M");
+		
+		//update the student object in database
+		theStudentDao.updateStudent(student);
+		
+		//print the updated student
+		System.out.println(student);
+	}
+
 
 	private void queryToGetStudentsByLastName(StudentDao theStudentDao) {
 		
