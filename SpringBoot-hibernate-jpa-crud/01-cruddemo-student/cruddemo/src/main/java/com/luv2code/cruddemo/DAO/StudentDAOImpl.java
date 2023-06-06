@@ -17,6 +17,10 @@ public class StudentDAOImpl implements StudentDao{
 	//define entity manager field
 	private EntityManager entityManager;
 	
+	public StudentDAOImpl() {
+		
+	}
+	
 	//inject entity manager using constructor injection
 	@Autowired
 	public StudentDAOImpl(EntityManager entityManager) {

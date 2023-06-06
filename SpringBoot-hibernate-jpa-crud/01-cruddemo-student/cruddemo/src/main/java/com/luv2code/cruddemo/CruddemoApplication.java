@@ -5,11 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 
 import com.luv2code.cruddemo.DAO.StudentDao;
 import com.luv2code.cruddemo.entity.Student;
 
+//@SpringBootApplication
 @SpringBootApplication
 public class CruddemoApplication { 
 	
@@ -32,7 +34,7 @@ public class CruddemoApplication {
 	
 	{
 		return runner->{
-			//createStudent(theStudentDao);
+			createStudent(theStudentDao);
 			
 			//createMultipleStudents(theStudentDao);
 			
@@ -46,7 +48,7 @@ public class CruddemoApplication {
 			
 			//querytoDeletStudentByStudentId(theStudentDao);
 			
-			querytoDeleteAllStudents(theStudentDao);
+		//	querytoDeleteAllStudents(theStudentDao);
 		};
 	}
 
