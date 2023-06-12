@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+
+<html xmlns ="http://www.thymeleaf.org">
+
+<head>
+	<title>Thymeleaf Demo</title>
+	<!-- reference the css file -->
+	<!-- @ refers to application root path.Generally static files would be in resources/static-->
+	<link rel="stylesheet" th:href="@{css/demo.css}" />
+</head>
+
+<body>
+<!-- th is the thymeleaf expression.The Thymeleaf uses theDate variable from Spring MVC Model -->
+<!-- apply the css on the view -->
+<p th:text="'Time on the server is' + ${theDate}" class="funny"/>
+</body>
+</html>
