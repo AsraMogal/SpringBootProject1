@@ -34,7 +34,11 @@ public class InstructorDetail {
 	//mappedBy refers the instructorDetail Property in instrucot table
 	//it tells hibernate to look for the join column
 	//it tells hibernate to find the associated instructor
-	@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
+	//@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
+	
+	//Suppose If i have to delete only InstructorDetail but not Instructor 
+	//then cascade everthing except remove
+	@OneToOne(mappedBy="instructorDetail",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private Instructor instructor;
 	
 	//Constructor

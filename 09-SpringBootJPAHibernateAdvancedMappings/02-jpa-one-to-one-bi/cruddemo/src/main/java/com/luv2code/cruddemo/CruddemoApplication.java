@@ -24,8 +24,21 @@ public class CruddemoApplication {
 			//createInstructor(appDAO);
 			//findInstructor(appDAO);
 			//deleteInstructor(appDAO);
-			findInstructorDetail(appDAO);
+			//findInstructorDetail(appDAO);
+			deleteInstructorDetail(appDAO);
 		};	
+	}
+
+
+	private void deleteInstructorDetail(AppDAO appDAO) {
+		// TODO Auto-generated method stub
+		int id=3;
+		
+		System.out.println("Deleting Instructor Detail");
+		
+		appDAO.deleteInstructorDetailById(id);
+		
+		System.out.println("Done!!");
 	}
 
 
